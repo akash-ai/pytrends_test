@@ -73,7 +73,7 @@ class TrendReq(object):
             if "proxies" in self.requests_args:
                 try:
                     return dict(filter(lambda i: i[0] == 'NID', requests.get(
-                        f'{BASE_TRENDS_URL}/?geo={self.hl[-2:]}',
+                        f'{BASE_TRENDS_URL}explore/?geo={self.hl[-2:]}',
                         timeout=self.timeout,
                         **self.requests_args
                     ).cookies.items()))
@@ -86,7 +86,7 @@ class TrendReq(object):
                     proxy = ''
                 try:
                     return dict(filter(lambda i: i[0] == 'NID', requests.get(
-                        f'{BASE_TRENDS_URL}/?geo={self.hl[-2:]}',
+                        f'{BASE_TRENDS_URL}explore/?geo={self.hl[-2:]}',
                         timeout=self.timeout,
                         proxies=proxy,
                         **self.requests_args
@@ -369,7 +369,6 @@ class TrendReq(object):
 
     def related_topics(self):
         """Request data from Google's Related Topics section and return a dictionary of dataframes
-
         If no top and/or rising related topics are found, the value for the key "top" and/or "rising" will be None
         """
 
@@ -417,7 +416,6 @@ class TrendReq(object):
 
     def related_queries(self):
         """Request data from Google's Related Queries section and return a dictionary of dataframes
-
         If no top and/or rising related queries are found, the value for the key "top" and/or "rising" will be None
         """
 
